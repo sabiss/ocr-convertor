@@ -35,5 +35,13 @@ ImagemInfo read_image(const std::string& path, sc::vector<Pixel>& pixels) {
 }
 
 void save_bin(const std::string& path, sc::vector<Pixel>& pixels, int w, int h) {
-    /// TODO:
+    std::ofstream arquivo(path, std::ios::binary);
+    if (!arquivo.is_open())
+        throw std::runtime_error("Erro ao salvar: " + path);
+
+    arquivo.write((char*)&w, sizeof(int));
+    arquivo.write((char*)&h, sizeof(int));
+
+    int total_bytes = pixels.size() * sizeof(Pixel);
+    arquivo.write((char*)pixels.data(), total_bytes);
 }

@@ -10,4 +10,4 @@ struct ImagemInfo {
 };
 
 ImagemInfo read_image(const std::string& path, sc::vector<Pixel>& pixels);
-void salvar_binario(const std::string& caminho, const sc::vector<Pixel>& vetor, int w, int h);
+void save_bin(const std::string& path, sc::vector<Pixel>& pixels, int w, int h);
